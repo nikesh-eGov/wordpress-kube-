@@ -1,0 +1,18 @@
+## Blog/Site Info
+wordpressUsername: admin
+wordpressPassword: wordpress
+wordpressEmail: sammy@example.com
+wordpressFirstName: Nikesh
+wordpressLastName: the Shark
+wordpressBlogName: Nikesh's Blog!
+
+## Database Settings
+externalDatabase:
+  host: wordpress-mysql
+  user: root
+  password: mysql
+  database: wordpress
+
+## Disabling MariaDB
+mariadb:
+  enabled: false

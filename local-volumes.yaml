@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv-1
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /home/nikesh/deploymet/wordpress/wordpress-mysql/mysql-volume
+---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: local-pv-2
+#  labels:
+#    type: local
+#spec:
+#  capacity:
+#    storage: 2Gi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: /home/nikesh/deploymet/wordpress/wordpress-mysql/wordpress-volume
