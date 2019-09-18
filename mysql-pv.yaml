@@ -1,0 +1,19 @@
+apiVersion: "v1"
+kind: "PersistentVolume"
+metadata:
+  name: "ukd-mysql-volume" 
+spec:
+  capacity:
+    storage: "10Gi" 
+  accessModes:
+    - "ReadWriteOnce"
+  persistentVolumeReclaimPolicy: Recycle
+  claimRef:
+   namespace: egov
+   name: ukd-mysql-volume-v2-0
+  azureDisk: 
+    diskName: mysql-volumeclaim 
+    diskURI: /subscriptions/b4e1aa53-c521-44e6-8a4d-5ae107916b5b/resourceGroups/ukd-uat-group/providers/Microsoft.Compute/disks/wordpress-ukd-mysql-volume
+    kind: Managed
+    fsType: ext4  
+    readOnly: false

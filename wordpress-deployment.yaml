@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wordpress
+  namespace: egov
+  labels:
+    app: wordpress
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      volumes:
+        - name: ukd-wordpress-volume
+          persistentVolumeClaim:
+            claimName: ukd-wordpress-volume
+      containers:
+      - image: wordpress:4.8-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql.egov
+        - name: WORDPRESS_DB_USER
+          value: dbadmin
+        - name: WORDPRESS_DB_NAME
+          value: ukdatabase
+        - name: WORDPRESS_DB_PASSWORD
+          value: dbadmin123_uk
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: ukd-wordpress-volume
+          mountPath: /var/www/html
+      
